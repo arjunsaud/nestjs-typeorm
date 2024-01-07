@@ -10,8 +10,4 @@ export class Item {
 
   @Column({ default: true })
   public: boolean;
-
-  constructor(item: Partial<Item>) {
-    Object.assign(this, item);
-  }
 }
