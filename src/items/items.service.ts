@@ -27,11 +27,10 @@ export class ItemsService {
     return this.itemRepository.findOneBy({ id: id });
   }
 
-  update(id: number, updateItemDto: UpdateItemDto) {
-    const item: Item = new Item();
+  async update(id: number, updateItemDto: UpdateItemDto) {
+    const item: Item = await this.itemRepository.findOneBy({ id: id });
     item.name = updateItemDto.name;
     item.public = updateItemDto.public;
-    item.id = id;
 
     return this.itemRepository.save(item);
   }
